@@ -1,24 +1,19 @@
+# DevLab: I²C Bosch BMI323 IMU
 
-# DevLab: [Protocol/Interface] [Chip/Model] [Brief Description][Module/Sensor/Shield/Adapter]
-<!-- Exception:
+The DevLab I²C Bosch BMI323 IMU (Mfr. Part # **UE0132**) is a compact
+six-axis inertial measurement module. It combines a 16-bit, three-axis
+accelerometer, a 16-bit, three-axis gyroscope, and an integrated digital
+temperature sensor.
 
-The PULSAR development board line does not use the DevLab: prefix.
-
-Format: PULSAR [MCU/Model]
-
-Examples: PULSAR C6, PULSAR H2, PULSAR RP2350
-
-The JUN R3 board also does not use DevLab:
-
-Example: JUN R3 -->
-
-## Introduction
-
-This is a modular development board based on a popular microcontroller, designed for rapid prototyping and educational use. It features flexible power options, modern connectivity, and user-friendly interfaces. An integrated LED matrix allows for simple visual feedback and display.
+The module supports I²C and SPI communication, provides two programmable
+interrupt outputs, and includes onboard voltage regulation and bidirectional
+level shifting for use with 3.3 V and 5 V host systems. Its DevLab form factor
+offers two Qwiic®/STEMMA QT-compatible connectors, castellated pads, and a
+dedicated SPI connector.
 
 <div align="center">
-  <img src="./hardware/resources/unit_top_v_1_0_0_ue0132_i2c_bosch_bmi323_imu.png" width="450px" alt="Development Board">
-  <p><em>Development Board</em></p>
+  <img src="./hardware/resources/unit_top_v_1_0_0_ue0132_i2c_bosch_bmi323_imu.png" width="450" alt="Top view of the DevLab I2C Bosch BMI323 IMU module">
+  <p><em>DevLab I²C Bosch BMI323 IMU</em></p>
 </div>
 
 <div align="center">
@@ -32,45 +27,82 @@ This is a modular development board based on a popular microcontroller, designed
 
 </div>
 
-<div align="center" >
+## Key Features
 
-## Overview
+- Bosch BMI323 six-axis IMU
+- 16-bit, three-axis accelerometer with ±2 g, ±4 g, ±8 g, and ±16 g ranges
+- 16-bit, three-axis gyroscope with ±125 dps, ±250 dps, ±500 dps,
+  ±1000 dps, and ±2000 dps ranges
+- Output data rates up to 6.4 kHz
+- Integrated digital temperature sensor
+- Programmable filtering, averaging, FIFO, and motion features
+- I²C Fast-mode Plus (up to 1 MHz) and SPI (up to 10 MHz)
+- Default 7-bit I²C address `0x69`; selectable address `0x68`
+- Two programmable interrupt outputs (`INT1` and `INT2`)
+- 3.3 V to 5.5 V module supply input
+- Onboard 1.8 V regulator and bidirectional logic-level shifting
+- Two Qwiic®/STEMMA QT-compatible I²C connectors
+- Castellated pads and a six-pin JST SH connector for SPI
 
-| Feature           | Description                                         |
-|-------------------|-----------------------------------------------------|
-| Microcontroller   | 8-bit MCU                                           |
-| Memory            | Flash, SRAM, EEPROM                                 |
-| Clock Speed       | 16 MHz                                              |
-| Power Supply      | USB-C (5V)                                          |
-| Interfaces        | UART, I2C, SPI, PWM, ADC, GPIO                      |
-| LED Matrix        | 5x5 RGB LED Matrix                                  |
-| Connectivity      | USB-C for programming and power                     |
-| Form Factor       | UNO-compatible                                      |
-| Development IDEs  | Arduino IDE, PlatformIO                             |
-| Onboard Features  | Integrated LED matrix, programmable LED, reset button|
-| Expansion Port    | I2C connector for sensors and modules               |
+## Specifications
 
-</div>
+| Parameter | Value |
+| --- | --- |
+| Sensor | Bosch BMI323 |
+| Measurement axes | 3-axis accelerometer + 3-axis gyroscope |
+| Module supply (`VCC`) | 3.3 V to 5.5 V |
+| Operating temperature | -40 °C to +85 °C |
+| Interfaces | I²C and SPI |
+| I²C addresses | `0x69` (default), `0x68` (address jumper closed) |
+| Maximum I²C clock | 1 MHz |
+| Maximum SPI clock | 10 MHz |
+| Device ID | `0x43` from register `0x00` |
+| Board dimensions | 25.40 mm × 17.80 mm |
+
+## Quick Start
+
+For an I²C connection:
+
+1. Connect `VCC` to a 3.3 V or 5 V supply.
+2. Connect `GND` to the host ground.
+3. Connect `SDA` and `SCL` to the host I²C bus.
+4. Scan for address `0x69`.
+5. Install the
+   [DevLab BMI323 Arduino library](https://github.com/UNIT-Electronics-MX/unit_library_devlab_bmi323)
+   and open its basic I²C example.
+
+See the [software guide](software/README.md) for installation and usage notes.
 
 ## Applications
 
-- **Prototyping:** Quickly develop and test ideas.
-- **Education:** Suitable for learning microcontroller basics.
-- **Wearables:** Compact and versatile for wearable devices.
-- **Displays:** Use the LED matrix for simple visual output.
+- Wearable electronics and activity tracking
+- Robotics, drones, and motion-control systems
+- Gesture recognition and human-machine interfaces
+- Tilt, inclination, and vibration measurement
+- IoT sensor nodes and asset tracking
+- Industrial monitoring
+- Embedded-systems education and rapid prototyping
+
+## Repository Contents
+
+| Path | Description |
+| --- | --- |
+| [`hardware/`](hardware/README.md) | Pinout, electrical information, schematic, topology, and dimensions |
+| [`software/`](software/README.md) | Software setup and basic usage |
+| [`docs/`](docs/) | Generated documentation |
 
 ## Resources
 
-- [Schematic Diagram](#)
-- [Pinout Diagram](#)
-- [Getting Started Guide](#)
+- [Product reference manual](hardware/unit_datasheet_v_1_0_0_devlab_i2c_bosch_bmi323_imu.pdf)
+- [Hardware guide](hardware/README.md)
+- [Schematic](hardware/unit_sch_v_1_0_0_0_ue0132_bmi323.pdf)
+- [Pinout diagram](hardware/unit_pinout_v_1_0_0_0_ue0132_bmi323_en.pdf)
+- [DevLab BMI323 Arduino library](https://github.com/UNIT-Electronics-MX/unit_library_devlab_bmi323)
 
-## 📝 License
+## License
 
-All hardware and documentation in this project are licensed under the **MIT License**.  
-See [`LICENSE.md`](LICENSE.md) for details.
+See the repository [license](LICENSE).
 
 <div align="center">
-  <sub>Template created by UNIT Electronics</sub>
+  <sub>UNIT Electronics</sub>
 </div>
-
